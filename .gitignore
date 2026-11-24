@@ -1,0 +1,25 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserdatastate
+xcuserdata/
+*.xcuserdatad/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Generated project
+Unravel.xcodeproj/
+
+# macOS
+.DS_Store
+
+# Local environment
+.env
