@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-Unravel includes UnrarKit 2.10 at commit `41db8d7a005130d29d64a6e9684a4836b098e7e4` and its bundled UnRAR 5.8.1 engine. These components are unmodified except for the selective-extraction code in the app, which uses UnrarKit's public streaming API.
+Unravel includes UnrarKit 2.10 at commit `41db8d7a005130d29d64a6e9684a4836b098e7e4` and its bundled UnRAR 5.91 engine. These components are unmodified except for the selective-extraction code in the app, which uses UnrarKit's public streaming API.
 
 ## UnrarKit
 

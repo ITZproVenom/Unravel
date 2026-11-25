@@ -61,7 +61,7 @@ enum ArchiveError: LocalizedError, Equatable {
         if nsError.domain == NSCocoaErrorDomain {
             switch nsError.code {
             case NSFileWriteOutOfSpaceError, NSFileWriteVolumeReadOnlyError: return .diskFull
-            case NSFileReadNoPermissionError, NSFileWriteNoPermissionError, NSFileReadUnknownError: return .permissionDenied
+            case NSFileReadNoPermissionError, NSFileWriteNoPermissionError: return .permissionDenied
             case NSUserCancelledError: return .cancelled
             default: break
             }

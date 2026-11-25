@@ -4,6 +4,6 @@
   "revision": "41db8d7a005130d29d64a6e9684a4836b098e7e4",
   "source": "https://github.com/abbeycode/UnrarKit.git",
   "path": "Vendor/UnrarKit",
-  "unrarVersion": "5.8.1",
+  "unrarVersion": "5.91",
   "reason": "Vendored at an immutable release commit for offline, reproducible Xcode builds. Only UnrarKit's documented source files are compiled; see project.yml."
 }
