@@ -1,0 +1,97 @@
+name: Unravel
+options:
+  bundleIdPrefix: com.itzprovenom
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+targets:
+  Unravel:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Sources
+      - path: Vendor/UnrarKit/Classes
+      - path: Vendor/UnrarKit/Libraries/unrar
+        excludes:
+          - arccmt.cpp
+          - blake2sp.cpp
+          - cmdfilter.cpp
+          - cmdmix.cpp
+          - coder.cpp
+          - crypt1.cpp
+          - crypt2.cpp
+          - crypt3.cpp
+          - crypt5.cpp
+          - hardlinks.cpp
+          - log.cpp
+          - model.cpp
+          - rarvmtbl.cpp
+          - recvol3.cpp
+          - recvol5.cpp
+          - suballoc.cpp
+          - uicommon.cpp
+          - uisilent.cpp
+          - ulinks.cpp
+          - unpack15.cpp
+          - unpack20.cpp
+          - unpack30.cpp
+          - unpack50.cpp
+          - unpack50frag.cpp
+          - unpackinline.cpp
+          - uowners.cpp
+          - win32stm.cpp
+      - path: Vendor/UnrarKit/Resources/en.lproj
+        buildPhase: resources
+      - path: Resources
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.itzprovenom.Unravel
+        PRODUCT_NAME: Unravel
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_OBJC_BRIDGING_HEADER: "$(SRCROOT)/Sources/Unravel-Bridging-Header.h"
+        HEADER_SEARCH_PATHS: "$(SRCROOT)/Vendor/UnrarKit/Classes $(SRCROOT)/Vendor/UnrarKit/Classes/Categories $(SRCROOT)/Vendor/UnrarKit/Libraries/unrar"
+        OTHER_LDFLAGS: "-lc++ -lz"
+        OTHER_CFLAGS: "-Wno-return-type -Wno-logical-op-parentheses -Wno-conversion -Wno-parentheses -Wno-unused-function -Wno-unused-variable -Wno-switch -Wno-unused-command-line-argument -Wno-strict-prototypes -Wno-conditional-uninitialized"
+        OTHER_CPLUSPLUSFLAGS: "-DSILENT -DRARDLL -Wno-return-type -Wno-logical-op-parentheses -Wno-conversion -Wno-parentheses -Wno-unused-function -Wno-unused-variable -Wno-switch -Wno-unused-command-line-argument -Wno-strict-prototypes -Wno-conditional-uninitialized"
+        CLANG_CXX_LANGUAGE_STANDARD: "gnu++17"
+  UnravelTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Tests
+    dependencies:
+      - target: Unravel
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_OBJC_BRIDGING_HEADER: "$(SRCROOT)/Sources/Unravel-Bridging-Header.h"
+        HEADER_SEARCH_PATHS: "$(SRCROOT)/Vendor/UnrarKit/Classes $(SRCROOT)/Vendor/UnrarKit/Classes/Categories $(SRCROOT)/Vendor/UnrarKit/Libraries/unrar"
+schemes:
+  Unravel:
+    build:
+      targets:
+        Unravel: all
+        UnravelTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - UnravelTests
+    archive:
+      config: Release
